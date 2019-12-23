@@ -5,7 +5,7 @@ the program and create an executable.
 
 ##### Running the Program
 Run it as:
-./cannyEdgeDetc <inputimage> <output>
+./cannyEdgeDetc \<inputimage\> \<output\>
 
 
 #### Possible Configurations
