@@ -16,3 +16,20 @@ the necessary preprocessor directives described in the function.
 
 ## Results
 
+[//]: # (Image References)
+
+[image1]: ./test01.jpg
+[image2]: ./out.jpg
+[image3]: ./result.png
+
+### Input
+
+![alt text][image1]
+
+### Output
+
+![alt text][image2]
+
+### Run
+
+![alt text][image3]
