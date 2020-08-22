@@ -29,8 +29,7 @@
 /* The "frame structure" structure contains an image frame (in RGB or grayscale
  * formats) for passing around the CS338 projects.
  */
-typedef struct frame_struct
-{
+typedef struct frame_struct {
   JSAMPLE *image_buffer;        /* Points to large array of R,G,B-order/grayscale data
 				 * Access directly with:
 				 *   image_buffer[num_components*pixel + component]
@@ -180,8 +179,7 @@ frame_ptr read_JPEG_file (char * filename) {
  * blanks appropriately (including allocating the actual frames), and
  * then destroy them afterwards.
  */
-frame_ptr allocate_frame(int height, int width, int num_components)
-{
+frame_ptr allocate_frame(int height, int width, int num_components) {
   int row_stride;               /* physical row width in output buffer */
   int i;
   frame_ptr p_info;             /* Output frame information */
@@ -214,8 +212,7 @@ frame_ptr allocate_frame(int height, int width, int num_components)
   return p_info;
 }
 
-void destroy_frame(frame_ptr kill_me)
-{
+void destroy_frame(frame_ptr kill_me) {
   free(kill_me->image_buffer);
   free(kill_me->row_pointers);
   free(kill_me);
@@ -305,8 +302,7 @@ void set_convo_kernel(float *kernel, int k, float sigma);
  * Makes sure values match in the two images
  * @credits: Professor Kelly.
  **/
-void checkResults(frame_ptr f1, frame_ptr f2)
-{
+void checkResults(frame_ptr f1, frame_ptr f2) {
   int i, j, k;
 
   if(f1->image_height != f2->image_height && f1->image_width != f2->image_width
@@ -425,8 +421,7 @@ void prepareKernelCall() {
  * @param kernel is the gaussian mask.
  * @param k is the integer described in the size of the gaussian mask.
  **/
-void seq_gaussianBlur(frame_ptr from, frame_ptr to, float *kernel, int k)
-{
+void seq_gaussianBlur(frame_ptr from, frame_ptr to, float *kernel, int k) {
   // iterates over the entire image matrix and apply the
   // gaussian mask over the entire image.
   for (int row = 0; row < from->image_height; row++) {
@@ -469,8 +464,7 @@ void seq_gaussianBlur(frame_ptr from, frame_ptr to, float *kernel, int k)
  * @param xGradient, yGradient are sobel kernels in the x and y directions respectively.
  **/
 void seq_gradientCalculation(frame_ptr from, frame_ptr magnitude, frame_ptr angle,
-			     int * xGradient, int *yGradient)
-{
+			     int * xGradient, int *yGradient) {
   // accumulates gradient in the x and y direction for each pixel
   int xGrad, yGrad;
 
@@ -525,8 +519,7 @@ void seq_gradientCalculation(frame_ptr from, frame_ptr magnitude, frame_ptr angl
  * the output frame_ptr.
  * @requires same dimension for all input frame_ptrs.
  **/
-void seq_maxSuppression(frame_ptr magnitude, frame_ptr angle_fptr, frame_ptr output)
-{
+void seq_maxSuppression(frame_ptr magnitude, frame_ptr angle_fptr, frame_ptr output) {
   int height = magnitude->image_height;
   int width = magnitude->image_width;
 
@@ -583,8 +576,7 @@ void seq_maxSuppression(frame_ptr magnitude, frame_ptr angle_fptr, frame_ptr out
  *         analysis.
  **/
 void seq_doubleThresholdAndHysteresis(frame_ptr input, frame_ptr final_output,
-				  int low_threshold, int high_threshold)
-{
+				  int low_threshold, int high_threshold) {
   int width = input->image_width;
   int height = input->image_height;
 
