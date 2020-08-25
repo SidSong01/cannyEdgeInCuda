@@ -1520,7 +1520,7 @@ void run_const_shared_mem_kernel(frame_ptr result)
   cudaEventElapsedTime(&time_inMilli, start, stop);
   
   // prints the elapsed time.
-  printf("Kernel Elapsed Time: %.8f\n", time_inMilli);
+  printf("Kernel Elapsed Time in ms: %.8f\n", time_inMilli);
 
   cudaFree(d_from);
   cudaFree(d_magMatrix);
@@ -1698,8 +1698,8 @@ void runKernel(frame_ptr result)
   float time_inMilli = 0;
   cudaEventElapsedTime(&time_inMilli, start, stop);
 
-  // prints the elapsed time.
-  printf("Kernel Elapsed Time: %.8f\n", time_inMilli);
+  // prints the elapsed time in ms.
+  printf("Kernel Elapsed Time in ms: %.8f\n", time_inMilli);
 
   // frees device resources
   cudaFree(d_from);
