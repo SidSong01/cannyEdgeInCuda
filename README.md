@@ -33,3 +33,5 @@ the necessary preprocessor directives described in the function.
 ### Run
 
 ![alt text][image3]
+
+**The time is in milliseconds.
